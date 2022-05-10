@@ -1,0 +1,42 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-md-8">
+      <h2 class="mb-3">Detail Contact</h2>
+      <% if (!contact) { %>
+      <div class="alert alert-danger fw-bold" role="alert">Data contact tidak ada. <br /><a href="/contact" class="alert-link fw-normal">&laquo; Kembali ke daftar contact.</a></div>
+      <% } else { %>
+      <div class="card" style="width: 18rem">
+        <div class="card-body">
+          <h5 class="card-title"><%= contact.nama %></h5>
+          <h6 class="card-subtitle mb-2 text-muted"><%= contact.nohp %></h6>
+          <p class="card-text"><%= contact.email %></p>
+          <a href="/contact/edit/<%= contact.nama %>" class="btn btn-primary btn-sm badge">Ubah</a>
+          <button type="button" class="btn btn-danger btn-sm badge" data-bs-toggle="modal" data-bs-target="#hapusContact">
+            Hapus
+          </button>
+          <a href="/contact" class="card-link d-block mt-3">Kembali ke daftar contact</a>
+        </div>
+      </div>
+      <% } %>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="hapusContact" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Hapus Contact</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Anda yakin ingin menghapus contact ini?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+        <a href="/contact/delete/<%= contact.nama %>" class="btn btn-danger" >Hapus</a>
+      </div>
+    </div>
+  </div>
+</div>
